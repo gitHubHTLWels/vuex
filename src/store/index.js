@@ -5,6 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    title: 'A Good Title',
+    about: 'franz.reitinger@htl-wels.at',
+    links: [
+      'http://google.com',
+      'http://coursetro.com',
+      'http://youtube.com'
+    ]
+  },
+  getters: {
+    countLinks: state => {
+      return state.links.length
+    }
   },
   mutations: {
   },

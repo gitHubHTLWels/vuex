@@ -6,7 +6,11 @@
         <input class="link-input" type="text" placeholder="Add a Link" v-model="newLink" />
       </form>
       <ul>
-        <li v-for="(link, index) in links" v-bind:key="index">{{ link }}</li>
+        <li v-for="(link, index) in links" v-bind:key="index">
+          {{ link }}
+          <button v-on:click="removeLinks(index)" class="rm">Remove</button>
+          <!-- Add this -->
+        </li>
       </ul>
     </div>
     <div class="right">
@@ -16,12 +20,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import Stats from '@/components/Stats.vue';
 
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
       newLink: ''
     };
@@ -32,9 +36,13 @@ export default {
   computed: mapState(['title', 'links']),
   methods: {
     ...mapMutations(['ADD_LINK']),
+    ...mapActions(['REMOVE_LINK']),
     addLink: function() {
       this.ADD_LINK(this.newLink);
       this.newLink = '';
+    },
+    removeLinks: function(link) {
+      this.REMOVE_LINK(link);
     }
   }
 };
@@ -87,5 +95,15 @@ input {
   box-shadow: 0 5px 5px lightgrey;
   margin-bottom: 50px;
   outline: none;
+}
+.rm {
+  float: right;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  background: #f9d0e3;
+  border: none;
+  padding: 5px;
+  color: #951c55;
+  cursor: pointer;
 }
 </style>

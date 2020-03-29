@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    title: 'A Good Title',
+    title: 'Link Table',
     about: 'franz.reitinger@htl-wels.at',
     links: [
       'http://google.com',

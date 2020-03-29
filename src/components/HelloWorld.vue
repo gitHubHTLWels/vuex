@@ -26,19 +26,43 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+<style>
+html,
+#app,
+.home {
+  height: 100%;
 }
+body {
+  background-color: #f4f4f4;
+  margin: 0;
+  height: 100%;
+}
+
+.hello {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 100%;
+  grid-template-areas: 'left right';
+  height: 100%;
+}
+
+.left,
+.right {
+  padding: 30px;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+ul li {
+  padding: 20px;
+  background: white;
+  margin-bottom: 8px;
 }
-a {
-  color: #42b983;
+
+.right {
+  grid-area: right;
+  background-color: #e9e9e9;
 }
 </style>
